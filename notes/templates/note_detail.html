@@ -1,0 +1,19 @@
+{% load markdownify %}
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+  <title>{{ note.title }}</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+  <h1>{{ note.title }}</h1>
+
+  <div>{{ note.content|linebreaksbr|markdownify }}</div>
+  
+  <p>Date: {{ note.created_at|date:"Y-m-d H:i" }}</p>
+
+</body>
+</html>

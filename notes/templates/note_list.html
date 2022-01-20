@@ -1,0 +1,26 @@
+{% load markdownify %}
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+  <title>Notes</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+    <h1>Notes</h1>
+    {% for note in notes %}
+    <h2>{{ note.title }}</h2>
+    <p>ID: {{ note.id }}</p>
+    <div>{{ note.content|linebreaksbr|markdownify }}</div>
+    <p>Link: <a href="{{ note.get_absolute_url }}">View</a></p>
+    <p>Date: {{ note.created_at|date:"Y-m-d H:i" }}</p>
+    {% empty %}
+    <p>No notes</p>
+    {% endfor %}
+
+    <p>Number of notes: {{ notes_count }}</p>
+
+</body>
+</html>
