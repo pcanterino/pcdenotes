@@ -1,14 +1,9 @@
+{% extends "note_base.html" %}
 {% load markdownify %}
-<!DOCTYPE html>
 
-<html lang="de">
-<head>
-  <title>Notes</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
-<body>
+{% block title %}Notes{% endblock %}
 
+{% block content %}
     <h1>Notes</h1>
     {% for note in notes %}
     <h2>{{ note.title }}</h2>
@@ -21,6 +16,4 @@
     {% endfor %}
 
     <p>Number of notes: {{ notes_count }}</p>
-
-</body>
-</html>
+{% endblock %}
