@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'pcdenotes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': str(os.getenv('PCDENOTES_DB_NAME')),
+        'HOST': str(os.getenv('PCDENOTES_DB_HOST')),
+        'PORT': int(os.getenv('PCDENOTES_DB_PORT')),
+        'USER': str(os.getenv('PCDENOTES_DB_USER')),
+        'PASSWORD': str(os.getenv('PCDENOTES_DB_PASSWORD'))
     }
 }
 
