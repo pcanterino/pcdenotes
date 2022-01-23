@@ -11,15 +11,15 @@
 </head>
 <body>
 
-  <div class="container-fluid p-5 bg-primary text-white text-center">
+  <header class="container-fluid p-5 bg-primary text-white text-center">
     <h1><a href="/" class="link-light">Notes</a></h1>
-  </div>
+  </header>
 
   <div id="content" class="container mt-5">
     {% block content %}{% endblock %}
   </div>
 
-  <div class="container-fluid p-5 bg-dark text-white text-center mt-5">
+  <footer class="container-fluid p-5 bg-dark text-white text-center mt-5">
     <div class="row">
       <div class="col-sm">
         <ul>
@@ -37,6 +37,6 @@
         </ul>
       </div>
     </div>
-  </div>
+  </footer>
 </body>
 </html>
