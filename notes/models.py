@@ -8,7 +8,7 @@ NOTE_STATUS = ((0, "Draft"),
                (1, "Published"))            
 
 class Note(models.Model):
-    title = models.CharField(max_length=250, unique=True)
+    title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notes_posted')
     content = models.TextField()
