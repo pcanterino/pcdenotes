@@ -6,10 +6,8 @@
 {% block content %}
   {% for note in notes_page %}
   <article class="container mt-5">
-    <h2>{{ note.title }}</h2>
-    <p>ID: {{ note.id }}</p>
+    <h2><a href="{{ note.get_absolute_url }}" class="link-dark">{{ note.title }}</a></h2>
     <div>{{ note.content|linebreaksbr|markdownify }}</div>
-    <p>Link: <a href="{{ note.get_absolute_url }}">View</a></p>
     <p>Date: {{ note.created_at|date:"Y-m-d H:i" }}</p>
   </article>
   {% empty %}
@@ -25,6 +23,4 @@
       {% endifnotequal %}
     {% endfor %}
   </ul>
-
-  <p>Number of notes: {{ notes_count }}</p>
 {% endblock %}

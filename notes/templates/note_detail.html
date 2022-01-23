@@ -4,7 +4,7 @@
 {% block title %}Notes - {{ note.title }}{% endblock %}
 
 {% block content %}
-  <article class="container mt-5">
+  <article>
     <h2>{{ note.title }}</h2>
     {{ note.content|linebreaksbr|markdownify }}
     <p>Date: {{ note.created_at|date:"Y-m-d H:i" }}</p>
