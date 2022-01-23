@@ -1,12 +1,12 @@
 {% extends "note_base.html" %}
 {% load markdownify %}
 
-{% block title %}{{ note.title }}{% endblock %}
+{% block title %}Notes - {{ note.title }}{% endblock %}
 
 {% block content %}
-  <h1>{{ note.title }}</h1>
-
-  <div>{{ note.content|linebreaksbr|markdownify }}</div>
-  
-  <p>Date: {{ note.created_at|date:"Y-m-d H:i" }}</p>
+  <article class="container mt-5">
+    <h2>{{ note.title }}</h2>
+    {{ note.content|linebreaksbr|markdownify }}
+    <p>Date: {{ note.created_at|date:"Y-m-d H:i" }}</p>
+  </article>
 {% endblock %}

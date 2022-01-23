@@ -4,16 +4,17 @@
 {% block title %}Notes{% endblock %}
 
 {% block content %}
-    <h1>Notes</h1>
-    {% for note in notes %}
+  {% for note in notes %}
+  <article class="container mt-5">
     <h2>{{ note.title }}</h2>
     <p>ID: {{ note.id }}</p>
     <div>{{ note.content|linebreaksbr|markdownify }}</div>
     <p>Link: <a href="{{ note.get_absolute_url }}">View</a></p>
     <p>Date: {{ note.created_at|date:"Y-m-d H:i" }}</p>
-    {% empty %}
-    <p>No notes</p>
-    {% endfor %}
+  </article>
+  {% empty %}
+  <p>No notes</p>
+  {% endfor %}
 
-    <p>Number of notes: {{ notes_count }}</p>
+  <p>Number of notes: {{ notes_count }}</p>
 {% endblock %}
