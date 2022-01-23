@@ -4,7 +4,7 @@
 {% block title %}Notes{% endblock %}
 
 {% block content %}
-  {% for note in notes %}
+  {% for note in notes_page %}
   <article class="container mt-5">
     <h2>{{ note.title }}</h2>
     <p>ID: {{ note.id }}</p>
@@ -15,6 +15,16 @@
   {% empty %}
   <p>No notes</p>
   {% endfor %}
+
+  <ul class="pagination">
+    {% for page in pages %}
+      {% ifnotequal page.number page_number %}
+        <li class="page-item"><a href="?page={{ page.number }}" class="page-link">{{ page.number }}</a></li>
+      {% else %}
+        <li class="page-item active"><span class="page-link">{{ page.number }}</span></li>
+      {% endifnotequal %}
+    {% endfor %}
+  </ul>
 
   <p>Number of notes: {{ notes_count }}</p>
 {% endblock %}

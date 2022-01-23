@@ -143,3 +143,5 @@ MARKDOWNIFY = {
         "BLEACH": False
     }
 }
+
+NOTES_PER_PAGE = 5
