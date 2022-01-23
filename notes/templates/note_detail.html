@@ -4,9 +4,5 @@
 {% block title %}Notes - {{ note.title }}{% endblock %}
 
 {% block content %}
-  <article>
-    <h2>{{ note.title }}</h2>
-    {{ note.content|linebreaksbr|markdownify }}
-    <p>Date: {{ note.created_at|date:"Y-m-d H:i" }}</p>
-  </article>
+{% include "note.html" %}
 {% endblock %}

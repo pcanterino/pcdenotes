@@ -1,0 +1,6 @@
+{% load markdownify %}
+<article class="container mt-5">
+    <h2><a href="{{ note.get_absolute_url }}" class="link-dark">{{ note.title }}</a></h2>
+    <div class="mt-3">{{ note.content|linebreaksbr|markdownify }}</div>
+    <p class="fst-italic" style="font-size: smaller;">Published on {{ note.created_at|date:"Y-m-d, H:i" }}</p>
+</article>

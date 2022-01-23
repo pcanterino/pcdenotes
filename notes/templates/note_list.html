@@ -1,20 +1,15 @@
 {% extends "note_base.html" %}
-{% load markdownify %}
 
 {% block title %}Notes{% endblock %}
 
 {% block content %}
   {% for note in notes_page %}
-  <article class="container mt-5">
-    <h2><a href="{{ note.get_absolute_url }}" class="link-dark">{{ note.title }}</a></h2>
-    <div>{{ note.content|linebreaksbr|markdownify }}</div>
-    <p>Date: {{ note.created_at|date:"Y-m-d H:i" }}</p>
-  </article>
+  {% include "note.html" %}
   {% empty %}
   <p>No notes</p>
   {% endfor %}
 
-  <ul class="pagination">
+  <ul class="pagination mt-5">
     {% for page in pages %}
       {% ifnotequal page.number page_number %}
         <li class="page-item"><a href="?page={{ page.number }}" class="page-link">{{ page.number }}</a></li>
