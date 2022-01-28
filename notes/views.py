@@ -7,7 +7,8 @@ from .models import Note
 # Create your views here.
 
 def note_list(request):
-    notes = Note.objects.filter(status=1)
+    notes = Note.objects.all() if request.user.is_staff else Note.objects.filter(status=1)
+
     notes_count = Note.objects.filter(status=1).count()
     paginator = Paginator(notes, NOTES_PER_PAGE)
 
@@ -25,5 +26,5 @@ def note_list(request):
     return render(request, 'note_list.html', {'notes_page': notes_page, 'notes_count': notes_count, 'pages': paginator, 'page_number': page_number, 'page_count': page_count})
 
 def note_detail(request, note_slug):
-    note = get_object_or_404(Note, slug=note_slug, status=1)
+    note = get_object_or_404(Note, slug=note_slug) if request.user.is_staff else get_object_or_404(Note, slug=note_slug, status=1)
     return render(request, 'note_detail.html', {'note': note})
