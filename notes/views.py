@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 
 from pcdenotes.settings import NOTES_PER_PAGE
@@ -24,6 +24,9 @@ def note_list(request):
     notes_page = paginator.get_page(page_number)
 
     return render(request, 'note_list.html', {'notes_page': notes_page, 'notes_count': notes_count, 'pages': paginator, 'page_number': page_number, 'page_count': page_count})
+
+def note_redirect(request):
+    return redirect('notes:note_list', permanent=True)
 
 def note_detail(request, note_slug):
     note = get_object_or_404(Note, slug=note_slug) if request.user.is_staff else get_object_or_404(Note, slug=note_slug, status=1)
