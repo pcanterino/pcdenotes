@@ -1,7 +1,7 @@
 {% extends "note_base.html" %}
 {% load markdownify %}
 
-{% block title %}Notes - {{ note.title }}{% endblock %}
+{% block title %}{{ note.title }} – Notes{% endblock %}
 
 {% block content %}
 {% include "note.html" %}
