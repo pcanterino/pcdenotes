@@ -1,0 +1,29 @@
+header {
+    color: #ffffff;
+    background-color: #0d6efd;
+    text-align: center;
+}
+
+header a:link, header a:visited, header a:active, header a:hover {
+    color: #ffffff;
+}
+
+footer {
+    color: #ffffff;
+    background-color: #212529;
+}
+
+footer a:link, footer a:visited, footer a:active, footer a:hover {
+    color: #ffffff;
+}
+
+footer ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+article .publication-date {
+    font-style: italic;
+    font-size: smaller;
+}
