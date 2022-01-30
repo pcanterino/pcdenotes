@@ -42,4 +42,5 @@ def archive_year(request, archive_year):
     return render(request, 'archive_year.html', {'year': archive_year, 'months': notes_months})
 
 def archive_month(request, archive_year, archive_month):
-    return render(request, 'archive_month.html', {'year': archive_year, 'month': archive_month})
+    notes = Note.objects.filter(status=1, created_at__year=archive_year, created_at__month=archive_month)
+    return render(request, 'archive_month.html', {'year': archive_year, 'month': archive_month, 'notes': notes})

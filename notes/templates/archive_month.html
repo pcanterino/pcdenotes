@@ -5,5 +5,13 @@
 {% block content %}
 <h2>Archive {{ month }} / {{ year }}</h2>
 
-
+{% if notes %}
+<ul>
+  {% for note in notes %}
+    <li><a href="{{ note.get_absolute_url }}"">{{ note.title }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No notes</p>
+{% endif %}
 {% endblock %}
