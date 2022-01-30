@@ -13,7 +13,7 @@
 <body class="d-flex flex-column min-vh-100">
 
   <header class="container-fluid p-5">
-    <h1><a href="/">Notes</a></h1>
+    <h1><a href="{% url "notes:note_list" %}">Notes</a></h1>
   </header>
 
   <div id="content" class="container flex-fill">
@@ -24,8 +24,8 @@
     <div class="row">
       <div class="col-lg-6 col-md-12 col-sm-12">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/archive/">Archive</a></li>
+          <li><a href="{% url "notes:note_list" %}">Home</a></li>
+          <li><a href="{% url "notes:archive_main" %}">Archive</a></li>
         </ul>
       </div>
       <div class="col-lg-6 col-md-12 col-sm-12">
