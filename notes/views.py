@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
-from django.db.models.functions import ExtractYear
+from django.db.models.functions import ExtractYear, ExtractMonth
 
 from pcdenotes.settings import NOTES_PER_PAGE
 from .models import Note
@@ -38,7 +38,8 @@ def archive_main(request):
     return render(request, 'archive_main.html', {'years': notes_years})
 
 def archive_year(request, archive_year):
-    return render(request, 'archive_year.html', {'year': archive_year})
+    notes_months = Note.objects.filter(status=1, created_at__year=archive_year).annotate(created_month=ExtractMonth('created_at')).values_list('created_month', flat=True).distinct().order_by('created_month')
+    return render(request, 'archive_year.html', {'year': archive_year, 'months': notes_months})
 
 def archive_month(request, archive_year, archive_month):
     return render(request, 'archive_month.html', {'year': archive_year, 'month': archive_month})

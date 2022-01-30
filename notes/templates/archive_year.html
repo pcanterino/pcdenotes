@@ -5,5 +5,13 @@
 {% block content %}
 <h2>Archive {{ year }}</h2>
 
-
+{% if months %}
+<ul>
+  {% for month in months %}
+    <li><a href="{{ month }}/">{{ month }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No notes</p>
+{% endif %}
 {% endblock %}
