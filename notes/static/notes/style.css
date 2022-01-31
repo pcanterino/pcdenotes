@@ -25,9 +25,8 @@ footer {
 }
 
 @media screen and (min-width: 600px) {
-    footer div:first-child {
-        padding-left: 10em;
-        padding-right: 10em;
+    footer div#footer-left {
+        text-align: right;
     }
 }
 
