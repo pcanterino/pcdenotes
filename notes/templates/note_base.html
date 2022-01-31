@@ -22,18 +22,18 @@
 
   <footer class="container-fluid p-5 mt-5">
     <div class="row">
-      <div class="col-lg-6 col-md-12 col-sm-12">
+      <div class="col-lg-3 col-md-12 col-sm-12">
         <ul>
           <li><a href="{% url "notes:note_list" %}">Home</a></li>
           <li><a href="{% url "notes:archive_main" %}">Archive</a></li>
         </ul>
       </div>
-      <div class="col-lg-6 col-md-12 col-sm-12">
+      <div class="col-lg-3 offset-lg-6 col-md-12 col-sm-12">
         This site contains random notes and thoughts by <a href="https://www.patrick-canterino.de/">Patrick Canterino</a>.<br>
         If you have any questions, you may write me an email: <a href="mailto:patrick@patrick-canterino.de">patrick@patrick-canterino.de</a>
       </div>
     </div>
-    <div class="text-center">
+    <div id="copyright">
       © 2022 <a href="https://www.patrick-canterino.de/">Patrick Canterino</a>
     </div>
   </footer>

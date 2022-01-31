@@ -13,9 +13,22 @@ h2 a:link, h2 a:visited, h2 a:active, h2 a:hover {
     color: #212529;
 }
 
+
+article .publication-date {
+    font-style: italic;
+    font-size: smaller;
+}
+
 footer {
     color: #ffffff;
     background-color: #212529;
+}
+
+@media screen and (min-width: 600px) {
+    footer div:first-child {
+        padding-left: 10em;
+        padding-right: 10em;
+    }
 }
 
 footer ul {
@@ -24,7 +37,7 @@ footer ul {
     padding-left: 0;
 }
 
-article .publication-date {
-    font-style: italic;
-    font-size: smaller;
+footer #copyright {
+    text-align: center;
+    margin-top: 2em;
 }
