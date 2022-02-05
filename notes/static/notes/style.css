@@ -22,6 +22,10 @@ article .publication-date {
     font-size: smaller;
 }
 
+article > div {
+    padding-top: 0.5em;
+}
+
 footer {
     color: #ffffff;
     background-color: #212529;
