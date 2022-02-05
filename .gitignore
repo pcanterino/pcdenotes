@@ -1,4 +1,5 @@
 .env*
+!.env.sample
 .venv
 __pycache__
 db.sqlite3
