@@ -13,6 +13,9 @@ h2 a:link, h2 a:visited, h2 a:active, h2 a:hover {
     color: #212529;
 }
 
+h2 {
+    padding-top: 1em;
+}
 
 article .publication-date {
     font-style: italic;

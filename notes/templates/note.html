@@ -1,5 +1,5 @@
 {% load markdownify %}
-<article class="container mt-5{% if note.is_draft %} text-muted{% endif %}">
+<article{% if note.is_draft %} class="text-muted"{% endif %}>
     <h2><a href="{{ note.get_absolute_url }}"{% if note.is_draft %} class="text-muted"{% endif %}>{{ note.title }}</a></h2>
     {% if note.is_draft %}<p class="fw-bold">Status: Draft</p>{% endif %}
     <div class="mt-3">{{ note.content|linebreaksbr|markdownify }}</div>
