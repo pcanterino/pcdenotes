@@ -9,4 +9,9 @@ class NoteAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content',)
     prepopulated_fields = {'slug': ('title',)}
 
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(NoteAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['author'].initial = request.user
+        return form
+
 admin.site.register(Note, NoteAdmin)
