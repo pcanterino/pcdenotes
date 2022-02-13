@@ -26,6 +26,10 @@ article > div {
     padding-top: 0.5em;
 }
 
+article img {
+    max-width: 100%;
+}
+
 footer {
     color: #ffffff;
     background-color: #212529;
