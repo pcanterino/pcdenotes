@@ -1,7 +1,7 @@
-{% load markdownify %}
+{% load notes_extras %}
 <article{% if note.is_draft %} class="text-muted"{% endif %}>
     <h2><a href="{{ note.get_absolute_url }}"{% if note.is_draft %} class="text-muted"{% endif %}>{{ note.title }}</a></h2>
     {% if note.is_draft %}<p class="fw-bold">Status: Draft</p>{% endif %}
-    <div>{{ note.content|linebreaksbr|markdownify }}</div>
+    <div>{{ note.content|markdown|safe }}</div>
     <p class="publication-date">Published on {{ note.created_at|date:"Y-m-d, H:i" }}</p>
 </article>
