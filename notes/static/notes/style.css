@@ -37,6 +37,11 @@ article blockquote {
     padding: 0.5em;
 }
 
+/* Removes a margin-bottom coming from Bootstrap, but not making sense in this case */
+article blockquote p:last-child {
+    margin-bottom: 0;
+}
+
 footer {
     color: #ffffff;
     background-color: #212529;
