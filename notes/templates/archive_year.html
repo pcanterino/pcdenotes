@@ -1,4 +1,5 @@
 {% extends "note_base.html" %}
+{% load notes_extras %}
 
 {% block title %}Archive {{ year }} – Notes{% endblock %}
 
@@ -8,7 +9,7 @@
 {% if months %}
 <ul>
   {% for month in months %}
-    <li><a href="{{ month }}/">{{ month }}</a></li>
+    <li><a href="{{ month }}/">{{ month|month_name }}</a></li>
   {% endfor %}
 </ul>
 {% else %}

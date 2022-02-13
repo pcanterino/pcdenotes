@@ -4,6 +4,8 @@ from django.template.defaultfilters import stringfilter
 import markdown as md
 from markdown.extensions import Extension
 
+import calendar
+
 register = template.Library()
 
 # See https://python-markdown.github.io/change_log/release-3.0/#safe_mode-and-html_replacement_text-keywords-deprecated
@@ -16,3 +18,7 @@ class EscapeHtml(Extension):
 @stringfilter
 def markdown(value):
     return md.markdown(value, extensions=[EscapeHtml(), 'nl2br'])
+
+@register.filter
+def month_name(value):
+    return calendar.month_name[value]
