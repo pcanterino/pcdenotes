@@ -1,10 +1,10 @@
 {% extends "note_base.html" %}
 {% load notes_extras %}
 
-{% block title %}Archive {{ month|month_name}} / {{ year }} – Notes{% endblock %}
+{% block title %}Archive {{ month|month_name}} {{ year }} – Notes{% endblock %}
 
 {% block content %}
-<h2>Archive {{ month|month_name }} / {{ year }}</h2>
+<h2>Archive {{ month|month_name }} {{ year }}</h2>
 
 {% if notes %}
 <ul>
