@@ -30,6 +30,13 @@ article img {
     max-width: 100%;
 }
 
+article blockquote {
+    background: #eeeeee;
+    font-style: italic;
+    border-left: 2px solid #d63384;
+    padding: 0.5em;
+}
+
 footer {
     color: #ffffff;
     background-color: #212529;
