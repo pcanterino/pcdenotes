@@ -23,12 +23,15 @@
   <footer class="container-fluid p-5 mt-5">
     <div class="row">
       <div id="footer-left" class="col-lg-4 col-md-12 col-sm-12">
+        <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangopowered126x54.gif" width="126" height="54" alt="Powered by Django." title="Powered by Django." /></a>
+      </div>
+      <div id="footer-middle" class="col-lg-4 col-md-12 col-sm-12">
         <p>
           <a href="{% url "notes:note_list" %}">Home</a><br>
           <a href="{% url "notes:archive_main" %}">Archive</a>
         </p>
       </div>
-      <div id="footer-right" class="col-lg-4 offset-lg-4 col-md-12 col-sm-12">
+      <div id="footer-right" class="col-lg-4 col-md-12 col-sm-12">
         This site contains random notes and thoughts by Patrick Canterino.<br>
         If you have any questions, you may write me an email: <a href="mailto:patrick@patrick-canterino.de">patrick@patrick-canterino.de</a>
       </div>

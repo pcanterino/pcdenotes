@@ -53,10 +53,18 @@ footer ul {
     padding-left: 0;
 }
 
+footer a img {
+    border: none;
+}
+
 /* Large screens */
 @media screen and (min-width: 600px) {
     footer div#footer-left {
         text-align: right;
+    }
+
+    footer div#footer-middle {
+        text-align: center;
     }
 
     footer #copyright {
