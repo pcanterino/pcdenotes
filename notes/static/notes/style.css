@@ -75,6 +75,10 @@ footer a img {
 
 /* Small screens */
 @media screen and (max-width: 600px) {
+    footer div#footer-middle {
+        margin-top: 1em;
+    }
+
     footer #copyright {
         margin-top: 2em;
     }
