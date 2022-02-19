@@ -37,7 +37,10 @@
       </div>
     </div>
     <div id="copyright">
-      © 2022 <a href="https://www.patrick-canterino.de/">Patrick Canterino</a>
+      {% with year_start="2022" %}
+      {% now "Y" as year_current %}
+      © {% if year_current > year_start %}{{ year_start }}-{% endif %}{{ year_current }} <a href="https://www.patrick-canterino.de/">Patrick Canterino</a>
+      {% endwith %}
     </div>
   </footer>
 </body>
