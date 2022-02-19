@@ -25,7 +25,6 @@ class Note(models.Model):
 
     def get_absolute_url(self):
         return reverse("notes:note_detail", kwargs={"note_slug": self.slug})
-        #return "/notes/%s" % (self.slug)
 
     def is_draft(self):
         return self.status == 0
