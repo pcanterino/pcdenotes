@@ -17,7 +17,7 @@ class EscapeHtml(Extension):
 @register.filter
 @stringfilter
 def markdown(value):
-    return md.markdown(value, extensions=[EscapeHtml(), 'nl2br'])
+    return md.markdown(value, extensions=[EscapeHtml(), 'nl2br', 'fenced_code'])
 
 @register.filter
 def month_name(value):
