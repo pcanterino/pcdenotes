@@ -74,7 +74,13 @@ footer a img {
 
     footer #copyright {
         text-align: center;
+        font-size: smaller;
         margin-top: 2em;
+    }
+
+    footer #footer-note {
+        text-align: center;
+        font-size: smaller;
     }
 }
 
@@ -84,7 +90,7 @@ footer a img {
         margin-top: 1em;
     }
 
-    footer #copyright {
+    footer #copyright, footer #footer-note {
         margin-top: 1em;
     }
 }
