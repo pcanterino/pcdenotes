@@ -4,3 +4,6 @@
 .venv-old
 __pycache__
 db.sqlite3
+media/uploads/*
+!media/uploads/.gitkeep
+media/_versions
