@@ -10,7 +10,7 @@ from .models import Note
 def note_list(request):
     notes = Note.objects.all() if request.user.is_staff else Note.objects.filter(status=1)
 
-    notes_count = Note.objects.filter(status=1).count()
+    notes_count = notes.count()
     paginator = Paginator(notes, NOTES_PER_PAGE)
 
     page_number = 1
