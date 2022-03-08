@@ -1,7 +1,7 @@
 asgiref==3.5.0
 backports.zoneinfo==0.2.1
-Django==4.0.2
-django-filebrowser-no-grappelli==4.0.0
+Django==4.0.3
+django-filebrowser-no-grappelli==4.0.1
 importlib-metadata==4.11.2
 Markdown==3.3.6
 mysqlclient==2.1.0
