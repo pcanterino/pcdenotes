@@ -7,6 +7,16 @@ from django.urls import reverse
 NOTE_STATUS = ((0, "Draft"),
                (1, "Published"))            
 
+class NoteQuerySet(models.QuerySet):
+    pass
+
+class NoteManager(models.Manager):
+    def per_year(self, year):
+        return super().get_queryset().filter(status=1, created_at__year=year)
+
+    def per_month(self, year, month):
+        return super().get_queryset().filter(status=1, created_at__year=year, created_at__month=month)
+
 class Note(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique=True)
@@ -16,6 +26,8 @@ class Note(models.Model):
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    objects = NoteManager()
 
     class Meta:
         ordering = ['-created_at']
