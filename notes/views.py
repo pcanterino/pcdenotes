@@ -34,11 +34,11 @@ def note_detail(request, note_slug):
     return render(request, 'note_detail.html', {'note': note})
 
 def archive_main(request):
-    notes_years = Note.objects.filter(status=1).annotate(created_year=ExtractYear('created_at')).values_list('created_year', flat=True).distinct().order_by('created_year')
+    notes_years = Note.objects.years()
     return render(request, 'archive_main.html', {'years': notes_years})
 
 def archive_year(request, archive_year):
-    notes_months = Note.objects.per_year(archive_year).annotate(created_month=ExtractMonth('created_at')).values_list('created_month', flat=True).distinct().order_by('created_month')
+    notes_months = Note.objects.months(archive_year)
     return render(request, 'archive_year.html', {'year': archive_year, 'months': notes_months})
 
 def archive_month(request, archive_year, archive_month):
