@@ -34,11 +34,11 @@ def note_detail(request, note_slug):
     return render(request, 'note_detail.html', {'note': note})
 
 def archive_main(request):
-    notes_years = Note.objects.years()
+    notes_years = Note.objects.years_with_total()
     return render(request, 'archive_main.html', {'years': notes_years})
 
 def archive_year(request, archive_year):
-    notes_months = Note.objects.months(archive_year)
+    notes_months = Note.objects.months_with_total(archive_year)
     return render(request, 'archive_year.html', {'year': archive_year, 'months': notes_months})
 
 def archive_month(request, archive_year, archive_month):

@@ -8,7 +8,7 @@
 {% if years %}
 <ul>
   {% for year in years %}
-    <li><a href="{{ year }}/">{{ year }}</a></li>
+    <li><a href="{{ year.created_year }}/">{{ year.created_year }}</a> ({{ year.total }})</li>
   {% endfor %}
 </ul>
 {% else %}

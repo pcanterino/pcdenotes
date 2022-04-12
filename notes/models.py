@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Count
 from django.db.models.functions import ExtractYear, ExtractMonth
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -21,8 +22,14 @@ class NoteManager(models.Manager):
     def years(self):
         return super().get_queryset().filter(status=1).annotate(created_year=ExtractYear('created_at')).values_list('created_year', flat=True).distinct().order_by('created_year')
 
+    def years_with_total(self):
+        return super().get_queryset().filter(status=1).annotate(created_year=ExtractYear('created_at')).values('created_year').annotate(total=Count('id')).order_by('created_year').values('created_year', 'total').distinct()
+
     def months(self, year):
         return self.per_year(year).annotate(created_month=ExtractMonth('created_at')).values_list('created_month', flat=True).distinct().order_by('created_month')
+
+    def months_with_total(self, year):
+        return self.per_year(year).annotate(created_month=ExtractMonth('created_at')).values('created_month').annotate(total=Count('id')).order_by('created_month').values('created_month', 'total').distinct()
 
 class Note(models.Model):
     title = models.CharField(max_length=250)
