@@ -64,6 +64,12 @@ class Note(models.Model):
     def is_published(self):
         return self.status == 1
 
+    def publication_date(self):
+        if self.published_at is None:
+            return self.created_at
+        else:
+            return self.published_at
+
 @receiver(pre_save, sender=Note)
 def note_pre_save(sender, instance, **kwargs):
     if instance.pk is None:
