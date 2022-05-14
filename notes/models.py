@@ -1,8 +1,13 @@
 from django.db import models
 from django.db.models import Count
 from django.db.models.functions import ExtractYear, ExtractMonth
+from django.db.models.signals import pre_save
+
+from django.dispatch import receiver
 from django.contrib.auth.models import User
 from django.urls import reverse
+
+from datetime import datetime
 
 # Create your models here.
 
@@ -40,6 +45,7 @@ class Note(models.Model):
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    published_at = models.DateTimeField(null=True, editable=False)
 
     objects = NoteManager()
 
@@ -57,3 +63,14 @@ class Note(models.Model):
 
     def is_published(self):
         return self.status == 1
+
+@receiver(pre_save, sender=Note)
+def note_pre_save(sender, instance, **kwargs):
+    if instance.pk is None:
+        if instance.status == 1:
+            instance.published_at = datetime.now()
+    else:
+        old_instance = Note.objects.get(pk=instance.pk)
+        
+        if old_instance.status == 0 and instance.status == 1:
+            instance.published_at = datetime.now()
