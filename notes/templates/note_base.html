@@ -26,10 +26,10 @@
         <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangopowered126x54.gif" width="126" height="54" alt="Powered by Django." title="Powered by Django." /></a>
       </div>
       <div id="footer-middle" class="col-lg-4 col-md-12 col-sm-12">
-        <p>
-          <a href="{% url "notes:note_list" %}">Home</a><br>
-          <a href="{% url "notes:archive_main" %}">Archive</a>
-        </p>
+        <ul>
+          <li><a href="{% url "notes:note_list" %}">Home</a></li>
+          <li><a href="{% url "notes:archive_main" %}">Archive</a></li>
+        </ul>
       </div>
       <div id="footer-right" class="col-lg-4 col-md-12 col-sm-12">
         This site contains random notes and thoughts by Patrick Canterino.<br>

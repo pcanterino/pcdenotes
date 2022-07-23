@@ -90,6 +90,10 @@ footer a img {
         margin-top: 1em;
     }
 
+    footer div#footer-middle li {
+        margin-bottom: 0.5em;
+    }
+
     footer #copyright, footer #footer-note {
         margin-top: 1em;
     }
