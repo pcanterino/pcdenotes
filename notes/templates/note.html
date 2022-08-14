@@ -3,5 +3,5 @@
     <h2><a href="{{ note.get_absolute_url }}"{% if note.is_draft %} class="text-muted"{% endif %}>{{ note.title }}</a></h2>
     {% if note.is_draft %}<p class="fw-bold">Status: Draft</p>{% endif %}
     <div>{{ note.content|markdown|safe }}</div>
-    <p class="publication-date">Published on {{ note.publication_date|date:"Y-m-d, H:i" }}</p>
+    <p class="publication-date">Published on {{ note.publication_date|date:"Y-m-d, H:i O" }}</p>
 </article>
