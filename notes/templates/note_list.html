@@ -10,7 +10,7 @@
   {% endfor %}
 
   {% if page_count > 1 %}
-    <ul class="pagination mt-5">
+    <ul class="pagination flex-wrap mt-5">
       {% for page in pages %}
         {% if page.number != page_number %}
           <li class="page-item"><a href="?page={{ page.number }}" class="page-link">{{ page.number }}</a></li>
