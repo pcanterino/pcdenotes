@@ -8,7 +8,7 @@ from .models import Note
 # Create your views here.
 
 def note_list(request):
-    notes = Note.objects.all() if request.user.is_staff else Note.objects.filter(status=1)
+    notes = Note.objects.all() if request.user.is_staff else Note.objects.all_published()
 
     notes_count = notes.count()
     paginator = Paginator(notes, NOTES_PER_PAGE)

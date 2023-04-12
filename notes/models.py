@@ -18,17 +18,23 @@ class NoteQuerySet(models.QuerySet):
     pass
 
 class NoteManager(models.Manager):
+    def all_published(self):
+        return super().get_queryset().filter(status=1)
+
+    def all_with_unpublished(self):
+        return super().all()
+
     def per_year(self, year):
-        return super().get_queryset().filter(status=1, created_at__year=year)
+        return self.all_published().filter(created_at__year=year)
 
     def per_month(self, year, month):
-        return super().get_queryset().filter(status=1, created_at__year=year, created_at__month=month)
+        return self.per_year(year).filter(created_at__month=month)
 
     def years(self):
-        return super().get_queryset().filter(status=1).annotate(created_year=ExtractYear('created_at')).values_list('created_year', flat=True).distinct().order_by('created_year')
+        return self.all_published().annotate(created_year=ExtractYear('created_at')).values_list('created_year', flat=True).distinct().order_by('created_year')
 
     def years_with_total(self):
-        return super().get_queryset().filter(status=1).annotate(created_year=ExtractYear('created_at')).values('created_year').annotate(total=Count('id')).order_by('created_year').values('created_year', 'total').distinct()
+        return self.all_published().annotate(created_year=ExtractYear('created_at')).values('created_year').annotate(total=Count('id')).order_by('created_year').values('created_year', 'total').distinct()
 
     def months(self, year):
         return self.per_year(year).annotate(created_month=ExtractMonth('created_at')).values_list('created_month', flat=True).distinct().order_by('created_month')
