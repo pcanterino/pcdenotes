@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import Count
-from django.db.models.functions import ExtractYear, ExtractMonth
+from django.db.models.functions import ExtractYear, ExtractMonth, Coalesce
 from django.db.models.signals import pre_save
 
 from django.dispatch import receiver
@@ -19,10 +19,10 @@ class NoteQuerySet(models.QuerySet):
 
 class NoteManager(models.Manager):
     def all_published(self):
-        return super().get_queryset().filter(status=1)
+        return super().get_queryset().filter(status=1).annotate(publication_date=Coalesce('published_at', 'created_at')).order_by('-publication_date')
 
-    def all_with_unpublished(self):
-        return super().all()
+    def all(self):
+        return super().all().annotate(publication_date=Coalesce('published_at', 'created_at')).order_by('-publication_date')
 
     def per_year(self, year):
         return self.all_published().filter(created_at__year=year)
@@ -69,12 +69,6 @@ class Note(models.Model):
 
     def is_published(self):
         return self.status == 1
-
-    def publication_date(self):
-        if self.published_at is None:
-            return self.created_at
-        else:
-            return self.published_at
 
 @receiver(pre_save, sender=Note)
 def note_pre_save(sender, instance, **kwargs):
