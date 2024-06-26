@@ -25,22 +25,22 @@ class NoteManager(models.Manager):
         return super().all().annotate(publication_date=Coalesce('published_at', 'created_at')).order_by('-publication_date')
 
     def per_year(self, year):
-        return self.all_published().filter(created_at__year=year)
+        return self.all_published().filter(publication_date__year=year)
 
     def per_month(self, year, month):
-        return self.per_year(year).filter(created_at__month=month)
+        return self.per_year(year).filter(publication_date__month=month)
 
     def years(self):
-        return self.all_published().annotate(created_year=ExtractYear('created_at')).values_list('created_year', flat=True).distinct().order_by('created_year')
+        return self.all_published().annotate(published_year=ExtractYear('publication_date')).values_list('published_year', flat=True).distinct().order_by('published_year')
 
     def years_with_total(self):
-        return self.all_published().annotate(created_year=ExtractYear('created_at')).values('created_year').annotate(total=Count('id')).order_by('created_year').values('created_year', 'total').distinct()
+        return self.all_published().annotate(published_year=ExtractYear('publication_date')).values('published_year').annotate(total=Count('id')).order_by('published_year').values('published_year', 'total').distinct()
 
     def months(self, year):
-        return self.per_year(year).annotate(created_month=ExtractMonth('created_at')).values_list('created_month', flat=True).distinct().order_by('created_month')
+        return self.per_year(year).annotate(published_month=ExtractMonth('publication_date')).values_list('published_month', flat=True).distinct().order_by('published_month')
 
     def months_with_total(self, year):
-        return self.per_year(year).annotate(created_month=ExtractMonth('created_at')).values('created_month').annotate(total=Count('id')).order_by('created_month').values('created_month', 'total').distinct()
+        return self.per_year(year).annotate(published_month=ExtractMonth('publication_date')).values('published_month').annotate(total=Count('id')).order_by('published_month').values('published_month', 'total').distinct()
 
 class Note(models.Model):
     title = models.CharField(max_length=250)

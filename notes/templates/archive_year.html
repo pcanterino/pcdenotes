@@ -9,7 +9,7 @@
 {% if months %}
 <ul>
   {% for month in months %}
-    <li><a href="{{ month.created_month }}/">{{ month.created_month|month_name }}</a> ({{ month.total }})</li>
+    <li><a href="{{ month.published_month }}/">{{ month.published_month|month_name }}</a> ({{ month.total }})</li>
   {% endfor %}
 </ul>
 {% else %}
