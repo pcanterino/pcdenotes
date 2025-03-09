@@ -1,5 +1,5 @@
 asgiref==3.8.1
-Django==5.1.6
+Django==5.1.7
 django-filebrowser-no-grappelli==4.0.2
 importlib_metadata==8.6.1
 Markdown==3.7
